@@ -18,7 +18,7 @@ exports.main = async (event, context) => {
   if (mode === 'get') {
     try {
       const res = await db.collection("DANDAN_WORD").get()
-      const payTypeAuthUsers = ['obBpt5XdwPJAfwnIWEq2FZdDIrBQ']
+        const payTypeAuthUsers = ['owS4l0eJ9NtNF9Xl8QExspW94CS8']
       return {
         code: 1,
         data: res.data[0],
@@ -36,7 +36,7 @@ exports.main = async (event, context) => {
   if (mode == 'update') {
     try {
       const { word, expire } = event
-      const authUsers = ['obBpt5WNBt2DoPFnUQyX5BA0O7L8', 'obBpt5XdwPJAfwnIWEq2FZdDIrBQ', 'obBpt5fRcE7ZHHM8pZWTEaUcYj-k']
+        const authUsers = ['owS4l0eJ9NtNF9Xl8QExspW94CS8']
       if (!authUsers.includes(wxContext.OPENID)) {
         return {
           code: -1,
@@ -46,7 +46,7 @@ exports.main = async (event, context) => {
       }
       const wordId = {
         'release-wifo3': '23fdfcbb-0f0c-4196-9d53-8c1ae616f04b',
-        'dandan-zdm86': '9a27f33c-a75f-4495-a04d-0d5f98f51231'
+          'miniapp-2rsbq': 'd701c5cf-0e5e-4e8e-942c-6f4a5c483314'
       }
       const res = await db.collection("DANDAN_WORD").doc(wordId[env])
       .update({

@@ -10,9 +10,9 @@
 		"autoAudits": false,
 		"checkInvalidKey": true
 	},
-	"appid": "wxda00e9b7cd5f39b1",
+	"appid": "wxabf65e68a5380a16",
 	"projectname": "dandan-account",
-	"libVersion": "2.6.5",
+	"libVersion": "2.9.3",
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
 	"cloudfunctionTemplateRoot": "cloudfunctionTemplate",
