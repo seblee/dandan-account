@@ -1,0 +1,540 @@
+{
+    "_id": "22e2e0be-a694-4f08-87df-4b8d45f8d5dc",
+    "categoryName": "食品",
+    "createTime": {
+        "$date": "2019-11-21T03:24:40.737Z"
+    },
+    "description": "食品",
+    "flow": 0.0,
+    "openId": "SYSTEM",
+    "parentId": "",
+    "type": 0.0,
+    "categoryIcon": "",
+    "isDel": false,
+    "isSelectable": false
+}
+{
+    "_id": "food_and_drink_breakfast",
+    "flow": 0.0,
+    "description": "早餐",
+    "type": 1.0,
+    "openId": "SYSTEM",
+    "isDel": false,
+    "parentId": "22e2e0be-a694-4f08-87df-4b8d45f8d5dc",
+    "categoryName": "早餐",
+    "categoryIcon": "",
+    "isSelectable": false,
+    "createTime": {
+        "$date": "2019-11-21T03:06:45.130Z"
+    }
+}
+{
+    "_id": "food_and_drink_lunch",
+    "parentId": "22e2e0be-a694-4f08-87df-4b8d45f8d5dc",
+    "categoryIcon": "",
+    "categoryName": "午餐",
+    "createTime": {
+        "$date": "2019-11-21T03:07:22.154Z"
+    },
+    "description": "午餐",
+    "flow": 0.0,
+    "isDel": false,
+    "openId": "SYSTEM",
+    "type": 0.0,
+    "isSelectable": false
+}
+{
+    "_id": "food_and_drink_dinner",
+    "flow": 0.0,
+    "description": "晚餐",
+    "type": 1.0,
+    "openId": "SYSTEM",
+    "isDel": false,
+    "parentId": "22e2e0be-a694-4f08-87df-4b8d45f8d5dc",
+    "categoryName": "晚餐",
+    "categoryIcon": "",
+    "isSelectable": false,
+    "createTime": {
+        "$date": "2019-11-21T03:06:45.130Z"
+    }
+}
+{
+    "_id": "efac1f01-5e86-4bd4-ad67-b50551bca219",
+    "flow": 0.0,
+    "description": "零食",
+    "type": 1.0,
+    "openId": "SYSTEM",
+    "isDel": false,
+    "parentId": "22e2e0be-a694-4f08-87df-4b8d45f8d5dc",
+    "categoryName": "零食",
+    "categoryIcon": "",
+    "isSelectable": false,
+    "createTime": {
+        "$date": "2019-11-21T03:06:45.130Z"
+    }
+}
+{
+    "_id": "2579d22e-d3f3-42c3-b7ef-24e482e6580f",
+    "categoryName": "出行",
+    "createTime": {
+        "$date": "2019-11-21T03:24:40.737Z"
+    },
+    "description": "出行",
+    "flow": 0.0,
+    "openId": "SYSTEM",
+    "parentId": "",
+    "type": 0.0,
+    "categoryIcon": "",
+    "isDel": false,
+    "isSelectable": false
+}
+{
+    "_id": "02493c66-08b0-4309-8f9a-c15f197d0346",
+    "flow": 0.0,
+    "description": "高铁",
+    "type": 1.0,
+    "openId": "SYSTEM",
+    "isDel": false,
+    "parentId": "2579d22e-d3f3-42c3-b7ef-24e482e6580f",
+    "categoryName": "高铁",
+    "categoryIcon": "",
+    "isSelectable": true,
+    "createTime": {
+        "$date": "2019-11-21T03:06:45.130Z"
+    }
+}
+{
+    "_id": "1b2750da-e975-47aa-afbd-7dcda9f6cb4d",
+    "parentId": "2579d22e-d3f3-42c3-b7ef-24e482e6580f",
+    "categoryIcon": "",
+    "categoryName": "飞机",
+    "createTime": {
+        "$date": "2019-11-21T03:07:22.154Z"
+    },
+    "description": "飞机",
+    "flow": 0.0,
+    "isDel": false,
+    "openId": "SYSTEM",
+    "type": 0.0,
+    "isSelectable": false
+}
+{
+    "_id": "87fa11dd-8b9d-4533-834c-c2f56d39d2b7",
+    "flow": 0.0,
+    "description": "网约车",
+    "type": 1.0,
+    "openId": "SYSTEM",
+    "isDel": false,
+    "parentId": "2579d22e-d3f3-42c3-b7ef-24e482e6580f",
+    "categoryName": "网约车",
+    "categoryIcon": "",
+    "isSelectable": true,
+    "createTime": {
+        "$date": "2019-11-21T03:06:45.130Z"
+    }
+}
+{
+    "_id": "7df345fd-4269-46ff-8bf2-8f63e1d0cb84",
+    "categoryName": "储值",
+    "createTime": {
+        "$date": "2019-11-21T03:24:40.737Z"
+    },
+    "description": "储值",
+    "flow": 0.0,
+    "openId": "SYSTEM",
+    "parentId": "",
+    "type": 0.0,
+    "categoryIcon": "",
+    "isDel": false,
+    "isSelectable": false
+}
+{
+    "_id": "20937c6e-c347-401c-aec1-c69e0bdcd443",
+    "flow": 0.0,
+    "description": "公交卡",
+    "type": 1.0,
+    "openId": "SYSTEM",
+    "isDel": false,
+    "parentId": "7df345fd-4269-46ff-8bf2-8f63e1d0cb84",
+    "categoryName": "公交卡",
+    "categoryIcon": "",
+    "isSelectable": false,
+    "createTime": {
+        "$date": "2019-11-21T03:06:45.130Z"
+    }
+}
+{
+    "_id": "1aaa869e-fe46-40a1-a93b-904879b45e79",
+    "parentId": "7df345fd-4269-46ff-8bf2-8f63e1d0cb84",
+    "categoryIcon": "",
+    "categoryName": "会员卡",
+    "createTime": {
+        "$date": "2019-11-21T03:07:22.154Z"
+    },
+    "description": "会员卡",
+    "flow": 0.0,
+    "isDel": false,
+    "openId": "SYSTEM",
+    "type": 0.0,
+    "isSelectable": false
+}
+{
+    "_id": "f55166f5-52bc-4ca7-a365-eba97367510c",
+    "flow": 0.0,
+    "description": "话费",
+    "type": 1.0,
+    "openId": "SYSTEM",
+    "isDel": false,
+    "parentId": "7df345fd-4269-46ff-8bf2-8f63e1d0cb84",
+    "categoryName": "话费",
+    "categoryIcon": "",
+    "isSelectable": false,
+    "createTime": {
+        "$date": "2019-11-21T03:06:45.130Z"
+    }
+}
+{
+    "_id": "ca5e5a1a-dddd-4fc7-accf-32cec920afd1",
+    "flow": 0.0,
+    "description": "虚拟商品",
+    "type": 1.0,
+    "openId": "SYSTEM",
+    "isDel": false,
+    "parentId": "7df345fd-4269-46ff-8bf2-8f63e1d0cb84",
+    "categoryName": "虚拟商品",
+    "categoryIcon": "",
+    "isSelectable": false,
+    "createTime": {
+        "$date": "2019-11-21T03:06:45.130Z"
+    }
+}
+{
+    "_id": "5cba485b-3da2-4a88-9338-7bd0f71f6f97",
+    "categoryName": "生活",
+    "createTime": {
+        "$date": "2019-11-21T03:24:40.737Z"
+    },
+    "description": "生活",
+    "flow": 0.0,
+    "openId": "SYSTEM",
+    "parentId": "",
+    "type": 0.0,
+    "categoryIcon": "",
+    "isDel": false,
+    "isSelectable": false
+}
+{
+    "_id": "312f8988-7e12-46c5-a301-79053a829108",
+    "flow": 0.0,
+    "description": "生活",
+    "type": 1.0,
+    "openId": "SYSTEM",
+    "isDel": false,
+    "parentId": "5cba485b-3da2-4a88-9338-7bd0f71f6f97",
+    "categoryName": "生活",
+    "categoryIcon": "",
+    "isSelectable": false,
+    "createTime": {
+        "$date": "2019-11-21T03:06:45.130Z"
+    }
+}
+{
+    "_id": "c9b4e864-c125-46b2-93f6-96919e8f58f6",
+    "categoryName": "服饰",
+    "createTime": {
+        "$date": "2019-11-21T03:24:40.737Z"
+    },
+    "description": "服饰",
+    "flow": 0.0,
+    "openId": "SYSTEM",
+    "parentId": "",
+    "type": 0.0,
+    "categoryIcon": "",
+    "isDel": false,
+    "isSelectable": false
+}
+{
+    "_id": "6d685078-9320-4e5f-8aa4-4db34677c025",
+    "flow": 0.0,
+    "description": "衣服",
+    "type": 1.0,
+    "openId": "SYSTEM",
+    "isDel": false,
+    "parentId": "c9b4e864-c125-46b2-93f6-96919e8f58f6",
+    "categoryName": "衣服",
+    "categoryIcon": "",
+    "isSelectable": false,
+    "createTime": {
+        "$date": "2019-11-21T03:06:45.130Z"
+    }
+}
+{
+    "_id": "6480e94e-e341-4cba-8809-8b87795276ce",
+    "parentId": "c9b4e864-c125-46b2-93f6-96919e8f58f6",
+    "categoryIcon": "",
+    "categoryName": "裤子",
+    "createTime": {
+        "$date": "2019-11-21T03:07:22.154Z"
+    },
+    "description": "裤子",
+    "flow": 0.0,
+    "isDel": false,
+    "openId": "SYSTEM",
+    "type": 0.0,
+    "isSelectable": false
+}
+{
+    "_id": "01650b5d-6351-4f60-8bd0-9323c41c165d",
+    "flow": 0.0,
+    "description": "鞋子",
+    "type": 1.0,
+    "openId": "SYSTEM",
+    "isDel": false,
+    "parentId": "c9b4e864-c125-46b2-93f6-96919e8f58f6",
+    "categoryName": "鞋子",
+    "categoryIcon": "",
+    "isSelectable": false,
+    "createTime": {
+        "$date": "2019-11-21T03:06:45.130Z"
+    }
+}
+{
+    "_id": "951b3d5a-5909-4d05-b30b-8ec5e082a4bc",
+    "flow": 0.0,
+    "description": "其他饰品",
+    "type": 1.0,
+    "openId": "SYSTEM",
+    "isDel": false,
+    "parentId": "c9b4e864-c125-46b2-93f6-96919e8f58f6",
+    "categoryName": "其他饰品",
+    "categoryIcon": "",
+    "isSelectable": false,
+    "createTime": {
+        "$date": "2019-11-21T03:06:45.130Z"
+    }
+}
+{
+    "_id": "ae6f1aec-b691-4a5d-9679-51dbc706f1ce",
+    "categoryName": "护理",
+    "createTime": {
+        "$date": "2019-11-21T03:24:40.737Z"
+    },
+    "description": "护理",
+    "flow": 0.0,
+    "openId": "SYSTEM",
+    "parentId": "",
+    "type": 0.0,
+    "categoryIcon": "",
+    "isDel": false,
+    "isSelectable": false
+}
+{
+    "_id": "b14e2ab4-0971-41f4-a412-ec8003cc8352",
+    "flow": 0.0,
+    "description": "化妆品",
+    "type": 1.0,
+    "openId": "SYSTEM",
+    "isDel": false,
+    "parentId": "ae6f1aec-b691-4a5d-9679-51dbc706f1ce",
+    "categoryName": "化妆品",
+    "categoryIcon": "",
+    "isSelectable": false,
+    "createTime": {
+        "$date": "2019-11-21T03:06:45.130Z"
+    }
+}
+{
+    "_id": "e8122db6-bb11-4a8b-b9f4-167df2a93b7d",
+    "categoryName": "文娱",
+    "createTime": {
+        "$date": "2019-11-21T03:24:40.737Z"
+    },
+    "description": "文娱",
+    "flow": 0.0,
+    "openId": "SYSTEM",
+    "parentId": "",
+    "type": 0.0,
+    "categoryIcon": "",
+    "isDel": false,
+    "isSelectable": false
+}
+{
+    "_id": "0d91604e-8271-4f51-97a1-14b87b214894",
+    "flow": 0.0,
+    "description": "书",
+    "type": 1.0,
+    "openId": "SYSTEM",
+    "isDel": false,
+    "parentId": "e8122db6-bb11-4a8b-b9f4-167df2a93b7d",
+    "categoryName": "书",
+    "categoryIcon": "",
+    "isSelectable": false,
+    "createTime": {
+        "$date": "2019-11-21T03:06:45.130Z"
+    }
+}
+{
+    "_id": "0807f43f-04e7-4910-bac9-21684f4a8df1",
+    "parentId": "e8122db6-bb11-4a8b-b9f4-167df2a93b7d",
+    "categoryIcon": "",
+    "categoryName": "电影",
+    "createTime": {
+        "$date": "2019-11-21T03:07:22.154Z"
+    },
+    "description": "电影",
+    "flow": 0.0,
+    "isDel": false,
+    "openId": "SYSTEM",
+    "type": 0.0,
+    "isSelectable": false
+}
+{
+    "_id": "57a35c35-11e5-450a-9181-5d306b428480",
+    "categoryName": "医药",
+    "createTime": {
+        "$date": "2019-11-21T03:24:40.737Z"
+    },
+    "description": "医药",
+    "flow": 0.0,
+    "openId": "SYSTEM",
+    "parentId": "",
+    "type": 0.0,
+    "categoryIcon": "",
+    "isDel": false,
+    "isSelectable": false
+}
+{
+    "_id": "e8320aec-cae7-44f4-9f67-76f122c23706",
+    "flow": 0.0,
+    "description": "生病",
+    "type": 1.0,
+    "openId": "SYSTEM",
+    "isDel": false,
+    "parentId": "57a35c35-11e5-450a-9181-5d306b428480",
+    "categoryName": "生病",
+    "categoryIcon": "",
+    "isSelectable": false,
+    "createTime": {
+        "$date": "2019-11-21T03:06:45.130Z"
+    }
+}
+{
+    "_id": "095e2559-1a8a-4fe3-9c66-fbe57b19d525",
+    "categoryName": "资金流动",
+    "createTime": {
+        "$date": "2019-11-21T03:24:40.737Z"
+    },
+    "description": "资金流动",
+    "flow": 0.0,
+    "openId": "SYSTEM",
+    "parentId": "",
+    "type": 0.0,
+    "categoryIcon": "",
+    "isDel": false,
+    "isSelectable": false
+}
+{
+    "_id": "db470f05-79ff-474d-952f-b646950e951c",
+    "flow": 0.0,
+    "description": "红包",
+    "type": 1.0,
+    "openId": "SYSTEM",
+    "isDel": false,
+    "parentId": "095e2559-1a8a-4fe3-9c66-fbe57b19d525",
+    "categoryName": "红包",
+    "categoryIcon": "",
+    "isSelectable": false,
+    "createTime": {
+        "$date": "2019-11-21T03:06:45.130Z"
+    }
+}
+{
+    "_id": "821294c2-d4f9-48c4-b0c6-ac5db3048399",
+    "parentId": "095e2559-1a8a-4fe3-9c66-fbe57b19d525",
+    "categoryIcon": "",
+    "categoryName": "借钱",
+    "createTime": {
+        "$date": "2019-11-21T03:07:22.154Z"
+    },
+    "description": "借钱",
+    "flow": 0.0,
+    "isDel": false,
+    "openId": "SYSTEM",
+    "type": 0.0,
+    "isSelectable": false
+}
+{
+    "_id": "499d3d21-4a5d-4886-9a3a-8c986229c1fa",
+    "categoryName": "理财",
+    "createTime": {
+        "$date": "2019-11-21T03:24:40.737Z"
+    },
+    "description": "理财",
+    "flow": 0.0,
+    "openId": "SYSTEM",
+    "parentId": "",
+    "type": 0.0,
+    "categoryIcon": "",
+    "isDel": false,
+    "isSelectable": false
+}
+{
+    "_id": "64f02758-5f69-4837-bbe1-74ec854fc4f2",
+    "flow": 0.0,
+    "description": "基金",
+    "type": 1.0,
+    "openId": "SYSTEM",
+    "isDel": false,
+    "parentId": "499d3d21-4a5d-4886-9a3a-8c986229c1fa",
+    "categoryName": "基金",
+    "categoryIcon": "",
+    "isSelectable": false,
+    "createTime": {
+        "$date": "2019-11-21T03:06:45.130Z"
+    }
+}
+{
+    "_id": "6f4de424-80b3-40eb-80d8-2582b8031314",
+    "parentId": "499d3d21-4a5d-4886-9a3a-8c986229c1fa",
+    "categoryIcon": "",
+    "categoryName": "股票",
+    "createTime": {
+        "$date": "2019-11-21T03:07:22.154Z"
+    },
+    "description": "股票",
+    "flow": 0.0,
+    "isDel": false,
+    "openId": "SYSTEM",
+    "type": 0.0,
+    "isSelectable": false
+}
+{
+    "_id": "cbfee5c2-09be-460d-88a1-fc1626162e1b",
+    "categoryName": "杂项",
+    "createTime": {
+        "$date": "2019-11-21T03:24:40.737Z"
+    },
+    "description": "杂项",
+    "flow": 0.0,
+    "openId": "SYSTEM",
+    "parentId": "",
+    "type": 0.0,
+    "categoryIcon": "",
+    "isDel": false,
+    "isSelectable": false
+}
+{
+    "_id": "ea63063e-de09-4f45-9a18-d3ac843e547b",
+    "flow": 0.0,
+    "description": "杂项",
+    "type": 1.0,
+    "openId": "SYSTEM",
+    "isDel": false,
+    "parentId": "cbfee5c2-09be-460d-88a1-fc1626162e1b",
+    "categoryName": "杂项",
+    "categoryIcon": "",
+    "isSelectable": false,
+    "createTime": {
+        "$date": "2019-11-21T03:06:45.130Z"
+    }
+}

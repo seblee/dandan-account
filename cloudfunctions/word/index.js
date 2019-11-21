@@ -46,7 +46,7 @@ exports.main = async (event, context) => {
       }
       const wordId = {
         'release-wifo3': '23fdfcbb-0f0c-4196-9d53-8c1ae616f04b',
-          'miniapp-2rsbq': 'd701c5cf-0e5e-4e8e-942c-6f4a5c483314'
+        'miniapp-2rsbq': 'f1d27a28-291e-465a-94aa-2eaf5c0797b7'
       }
       const res = await db.collection("DANDAN_WORD").doc(wordId[env])
       .update({

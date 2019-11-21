@@ -1,0 +1,150 @@
+{
+    "_id": "62769c35-8270-4e3f-8113-221c3957b2dd",
+    "categoryName": "收入",
+    "createTime": {
+        "$date": "2019-11-21T03:24:40.737Z"
+    },
+    "description": "收入",
+    "flow": 1.0,
+    "openId": "SYSTEM",
+    "parentId": "",
+    "type": 0.0,
+    "categoryIcon": "",
+    "isDel": false,
+    "isSelectable": false
+}
+{
+    "_id": "45a7925c-949a-428a-aec4-bbd92773d02c",
+    "flow": 1.0,
+    "description": "生活费",
+    "type": 1.0,
+    "openId": "SYSTEM",
+    "isDel": false,
+    "parentId": "62769c35-8270-4e3f-8113-221c3957b2dd",
+    "categoryName": "生活费",
+    "categoryIcon": "",
+    "isSelectable": false,
+    "createTime": {
+        "$date": "2019-11-21T03:06:45.130Z"
+    }
+}
+{
+    "_id": "73037eb7-3ac5-4dea-8c15-7d1da5f2f1fe",
+    "flow": 1.0,
+    "description": "工资",
+    "type": 1.0,
+    "openId": "SYSTEM",
+    "isDel": false,
+    "parentId": "62769c35-8270-4e3f-8113-221c3957b2dd",
+    "categoryName": "工资",
+    "categoryIcon": "",
+    "isSelectable": false,
+    "createTime": {
+        "$date": "2019-11-21T03:06:45.130Z"
+    }
+}
+{
+    "_id": "cbfe0d7e-c560-45a7-928f-f3739c96e518",
+    "flow": 1.0,
+    "description": "股票",
+    "type": 1.0,
+    "openId": "SYSTEM",
+    "isDel": false,
+    "parentId": "62769c35-8270-4e3f-8113-221c3957b2dd",
+    "categoryName": "股票",
+    "categoryIcon": "",
+    "isSelectable": false,
+    "createTime": {
+        "$date": "2019-11-21T03:06:45.130Z"
+    }
+}
+{
+    "_id": "2ae194d0-c687-45d6-9532-fa16f7accd21",
+    "flow": 1.0,
+    "description": "基金",
+    "type": 1.0,
+    "openId": "SYSTEM",
+    "isDel": false,
+    "parentId": "62769c35-8270-4e3f-8113-221c3957b2dd",
+    "categoryName": "基金",
+    "categoryIcon": "",
+    "isSelectable": false,
+    "createTime": {
+        "$date": "2019-11-21T03:06:45.130Z"
+    }
+}
+{
+    "_id": "5cad5cb2-87c5-4add-8cd8-1dc469d93221",
+    "flow": 1.0,
+    "description": "奖金",
+    "type": 1.0,
+    "openId": "SYSTEM",
+    "isDel": false,
+    "parentId": "62769c35-8270-4e3f-8113-221c3957b2dd",
+    "categoryName": "奖金",
+    "categoryIcon": "",
+    "isSelectable": false,
+    "createTime": {
+        "$date": "2019-11-21T03:06:45.130Z"
+    }
+}
+{
+    "_id": "f41466f5-b950-495c-abbe-915adbf391ea",
+    "flow": 1.0,
+    "description": "红包",
+    "type": 1.0,
+    "openId": "SYSTEM",
+    "isDel": false,
+    "parentId": "62769c35-8270-4e3f-8113-221c3957b2dd",
+    "categoryName": "红包",
+    "categoryIcon": "",
+    "isSelectable": false,
+    "createTime": {
+        "$date": "2019-11-21T03:06:45.130Z"
+    }
+}
+{
+    "_id": "a12a20db-6db2-45e1-b3d6-f8aa34fe9ef0",
+    "flow": 1.0,
+    "description": "礼金",
+    "type": 1.0,
+    "openId": "SYSTEM",
+    "isDel": false,
+    "parentId": "62769c35-8270-4e3f-8113-221c3957b2dd",
+    "categoryName": "礼金",
+    "categoryIcon": "",
+    "isSelectable": false,
+    "createTime": {
+        "$date": "2019-11-21T03:06:45.130Z"
+    }
+}
+{
+    "_id": "40a2296b-1544-42c8-80e0-cfc943042015",
+    "flow": 1.0,
+    "description": "收债",
+    "type": 1.0,
+    "openId": "SYSTEM",
+    "isDel": false,
+    "parentId": "62769c35-8270-4e3f-8113-221c3957b2dd",
+    "categoryName": "收债",
+    "categoryIcon": "",
+    "isSelectable": false,
+    "createTime": {
+        "$date": "2019-11-21T03:06:45.130Z"
+    }
+}
+{
+    "_id": "4a748df5-d7f2-45b3-9a33-916319aeb09f",
+    "flow": 1.0,
+    "description": "退款",
+    "type": 1.0,
+    "openId": "SYSTEM",
+    "isDel": false,
+    "parentId": "62769c35-8270-4e3f-8113-221c3957b2dd",
+    "categoryName": "退款",
+    "categoryIcon": "",
+    "isSelectable": false,
+    "createTime": {
+        "$date": "2019-11-21T03:06:45.130Z"
+    }
+}

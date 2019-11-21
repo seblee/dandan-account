@@ -1553,13 +1553,15 @@ function contextRotate(context, opts) {
 function drawPointShape(points, color, shape, context, opts) {
   context.beginPath();
 	if(opts.dataPointShapeType == 'hollow'){
-		context.setStrokeStyle(color);
-		context.setFillStyle(opts.background);
-		context.setLineWidth(2 * opts.pixelRatio);
+		context.strokeStyle=color;
+		context.fillStyle=opts.background;
+		//context.setLineWidth(2 * opts.pixelRatio);
+		context.lineWidth=2 * opts.pixelRatio;
 	}else{
-		context.setStrokeStyle("#ffffff");
-		context.setFillStyle(color);
-		context.setLineWidth(1 * opts.pixelRatio);
+		context.strokeStyle="#ffffff";
+		context.fillStyle=color;
+		//context.setLineWidth(1 * opts.pixelRatio);
+		context.lineWidth=1 * opts.pixelRatio;
 	}
   if (shape === 'diamond') {
     points.forEach(function(item, index) {
@@ -1620,7 +1622,7 @@ function drawRingTitle(opts, config, context, center) {
     }
     context.beginPath();
     context.setFontSize(subtitlefontSize);
-    context.setFillStyle(subtitleFontColor);
+    context.fillStyle=subtitleFontColor;
     context.fillText(subtitle, startX, startY);
     context.closePath();
     context.stroke();
@@ -1634,7 +1636,7 @@ function drawRingTitle(opts, config, context, center) {
     }
     context.beginPath();
     context.setFontSize(titlefontSize);
-    context.setFillStyle(titleFontColor);
+    context.fillStyle=titleFontColor;
     context.fillText(title, _startX, _startY);
     context.closePath();
     context.stroke();
@@ -1649,7 +1651,7 @@ function drawPointText(points, series, config, context) {
       //var formatVal = series.format ? series.format(data[index]) : data[index];
       context.beginPath();
       context.setFontSize(series.textSize || config.fontSize);
-      context.setFillStyle(series.textColor || '#666666');
+      context.fillStyle=series.textColor || '#666666';
       var value = data[index]
       if (typeof data[index] === 'object' && data[index] !== null) {
         value = data[index].value
@@ -1684,7 +1686,7 @@ function drawGaugeLabel(gaugeOption, radius, centerPosition, opts, config, conte
     var startY = pos.y;
     context.beginPath();
     context.setFontSize(config.fontSize);
-    context.setFillStyle(gaugeOption.labelColor || '#666666');
+    context.fillStyle=gaugeOption.labelColor || '#666666';
     context.fillText(labelText, startX, startY + config.fontSize / 2);
     context.closePath();
     context.stroke();
@@ -1717,7 +1719,7 @@ function drawRadarLabel(angleList, radius, centerPosition, opts, config, context
     }
     context.beginPath();
     context.setFontSize(config.fontSize);
-    context.setFillStyle(radarOption.labelColor || '#666666');
+    context.fillStyle=radarOption.labelColor || '#666666';
     context.fillText(opts.categories[index] || '', startX, startY + config.fontSize / 2);
     context.closePath();
     context.stroke();
@@ -1809,11 +1811,12 @@ function drawPieText(series, opts, config, context, radius, center) {
     let lineStartPoistion = convertCoordinateOrigin(item.lineStart.x, item.lineStart.y, center);
     let lineEndPoistion = convertCoordinateOrigin(item.lineEnd.x, item.lineEnd.y, center);
     let textPosition = convertCoordinateOrigin(item.start.x, item.start.y, center);
-    context.setLineWidth(1 * opts.pixelRatio);
+    // context.setLineWidth(1 * opts.pixelRatio);
+    context.lineWidth=1 * opts.pixelRatio;
     context.setFontSize(config.fontSize);
     context.beginPath();
-    context.setStrokeStyle(item.color);
-    context.setFillStyle(item.color);
+    context.strokeStyle=item.color;
+    context.fillStyle=item.color;
     context.moveTo(lineStartPoistion.x, lineStartPoistion.y);
     let curveStartX = item.start.x < 0 ? textPosition.x + item.width : textPosition.x;
     let textStartX = item.start.x < 0 ? textPosition.x - 5 : textPosition.x + 5;
@@ -1828,7 +1831,7 @@ function drawPieText(series, opts, config, context, radius, center) {
     context.fill();
     context.beginPath();
     context.setFontSize(item.textSize || config.fontSize);
-    context.setFillStyle(item.textColor || '#666666');
+    context.fillStyle=item.textColor || '#666666';
     context.fillText(item.text, textStartX, textPosition.y + 3);
     context.closePath();
     context.stroke();
@@ -1846,8 +1849,9 @@ function drawToolTipSplitLine(offsetX, opts, config, context) {
   if (toolTipOption.gridType == 'dash') {
     context.setLineDash([toolTipOption.dashLength, toolTipOption.dashLength]);
   }
-  context.setStrokeStyle(toolTipOption.gridColor || '#cccccc');
-  context.setLineWidth(1 * opts.pixelRatio);
+  context.strokeStyle=toolTipOption.gridColor || '#cccccc';
+  // context.setLineWidth(1 * opts.pixelRatio);
+  context.lineWidth=1 * opts.pixelRatio;
   context.beginPath();
   context.moveTo(offsetX, startY);
   context.lineTo(offsetX, endY);
@@ -1862,9 +1866,10 @@ function drawToolTipSplitLine(offsetX, opts, config, context) {
     let textX = offsetX - 0.5 * textWidth;
     let textY = endY;
     context.beginPath();
-    context.setFillStyle(hexToRgb(toolTipOption.labelBgColor || config.toolTipBackground, toolTipOption.labelBgOpacity || config.toolTipOpacity));
-    context.setStrokeStyle(toolTipOption.labelBgColor || config.toolTipBackground);
-    context.setLineWidth(1 * opts.pixelRatio);
+    context.fillStyle=hexToRgb(toolTipOption.labelBgColor || config.toolTipBackground, toolTipOption.labelBgOpacity || config.toolTipOpacity);
+    context.strokeStyle=toolTipOption.labelBgColor || config.toolTipBackground;
+    // context.setLineWidth(1 * opts.pixelRatio);
+    context.lineWidth=1 * opts.pixelRatio;
     context.rect(textX - config.toolTipPadding, textY, textWidth + 2 * config.toolTipPadding, config.fontSize + 2 * config.toolTipPadding);
     context.closePath();
     context.stroke();
@@ -1872,7 +1877,7 @@ function drawToolTipSplitLine(offsetX, opts, config, context) {
 
     context.beginPath();
     context.setFontSize(config.fontSize);
-    context.setFillStyle(toolTipOption.labelFontColor || config.fontColor);
+    context.fillStyle=toolTipOption.labelFontColor || config.fontColor;
     context.fillText(String(labelText), textX, textY + config.toolTipPadding + config.fontSize);
     context.closePath();
     context.stroke();
@@ -1902,8 +1907,9 @@ function drawMarkLine(opts, config, context) {
     if (markLineOption.type == 'dash') {
       context.setLineDash([markLineOption.dashLength, markLineOption.dashLength]);
     }
-    context.setStrokeStyle(item.lineColor);
-    context.setLineWidth(1 * opts.pixelRatio);
+    context.strokeStyle=item.lineColor;
+    // context.setLineWidth(1 * opts.pixelRatio);
+    context.lineWidth=1 * opts.pixelRatio;
     context.beginPath();
     context.moveTo(startX, item.y);
     context.lineTo(endX, item.y);
@@ -1919,9 +1925,10 @@ function drawMarkLine(opts, config, context) {
 
       let textX = bgStartX + (bgWidth - textWidth) / 2;
       let textY = item.y;
-      context.setFillStyle(hexToRgb(item.labelBgColor, item.labelBgOpacity));
-      context.setStrokeStyle(item.labelBgColor);
-      context.setLineWidth(1 * opts.pixelRatio);
+      context.fillStyle=hexToRgb(item.labelBgColor, item.labelBgOpacity);
+      context.strokeStyle=item.labelBgColor;
+      // context.setLineWidth(1 * opts.pixelRatio);
+      context.lineWidth=1 * opts.pixelRatio;
       context.beginPath();
       context.rect(bgStartX, textY - 0.5 * config.fontSize - config.toolTipPadding, bgWidth, config.fontSize + 2 * config.toolTipPadding);
       context.closePath();
@@ -1930,7 +1937,7 @@ function drawMarkLine(opts, config, context) {
 
       context.beginPath();
       context.setFontSize(config.fontSize);
-      context.setFillStyle(item.labelFontColor);
+      context.fillStyle=item.labelFontColor;
       context.fillText(String(labelText), textX, textY + 0.5 * config.fontSize);
       context.stroke();
     }
@@ -1949,8 +1956,9 @@ function drawToolTipHorizentalLine(opts, config, context, eachSpacing, xAxisPoin
   if (toolTipOption.gridType == 'dash') {
     context.setLineDash([toolTipOption.dashLength, toolTipOption.dashLength]);
   }
-  context.setStrokeStyle(toolTipOption.gridColor || '#cccccc');
-  context.setLineWidth(1 * opts.pixelRatio);
+  context.strokeStyle=toolTipOption.gridColor || '#cccccc';
+  // context.setLineWidth(1 * opts.pixelRatio);
+  context.lineWidth=1 * opts.pixelRatio;
   context.beginPath();
   context.moveTo(startX, opts.tooltip.offset.y);
   context.lineTo(endX, opts.tooltip.offset.y);
@@ -1978,9 +1986,10 @@ function drawToolTipHorizentalLine(opts, config, context, eachSpacing, xAxisPoin
       let textX = bgStartX + (bgWidth - textWidth) / 2;
       let textY = opts.tooltip.offset.y;
       context.beginPath();
-      context.setFillStyle(hexToRgb(toolTipOption.labelBgColor || config.toolTipBackground, toolTipOption.labelBgOpacity || config.toolTipOpacity));
-      context.setStrokeStyle(toolTipOption.labelBgColor || config.toolTipBackground);
-      context.setLineWidth(1 * opts.pixelRatio);
+      context.fillStyle=hexToRgb(toolTipOption.labelBgColor || config.toolTipBackground, toolTipOption.labelBgOpacity || config.toolTipOpacity);
+      context.strokeStyle=toolTipOption.labelBgColor || config.toolTipBackground;
+      // context.setLineWidth(1 * opts.pixelRatio);
+      context.lineWidth=1 * opts.pixelRatio;
       context.rect(bgStartX, textY - 0.5 * config.fontSize - config.toolTipPadding, bgWidth, config.fontSize + 2 * config.toolTipPadding);
       context.closePath();
       context.stroke();
@@ -1988,7 +1997,7 @@ function drawToolTipHorizentalLine(opts, config, context, eachSpacing, xAxisPoin
       
       context.beginPath();
       context.setFontSize(config.fontSize);
-      context.setFillStyle(toolTipOption.labelFontColor || config.fontColor);
+      context.fillStyle=toolTipOption.labelFontColor || config.fontColor;
       context.fillText(labelText[i], textX, textY + 0.5 * config.fontSize);
       context.closePath();
       context.stroke();
@@ -2009,7 +2018,7 @@ function drawToolTipSplitArea(offsetX, opts, config, context, eachSpacing) {
   var startY = opts.area[0];
   var endY = opts.height - opts.area[2];
   context.beginPath();
-  context.setFillStyle(hexToRgb(toolTipOption.activeBgColor, toolTipOption.activeBgOpacity));
+  context.fillStyle=hexToRgb(toolTipOption.activeBgColor, toolTipOption.activeBgOpacity);
   context.rect(offsetX - eachSpacing / 2, startY, eachSpacing, endY - startY);
   context.closePath();
   context.fill();
@@ -2051,7 +2060,7 @@ function drawToolTip(textList, offset, opts, config, context, eachSpacing, xAxis
   }
   // draw background rect
   context.beginPath();
-  context.setFillStyle(hexToRgb(toolTipOption.bgColor || config.toolTipBackground, toolTipOption.bgOpacity || config.toolTipOpacity));
+  context.fillStyle=hexToRgb(toolTipOption.bgColor || config.toolTipBackground, toolTipOption.bgOpacity || config.toolTipOpacity);
   if (isOverRightBorder) {
     context.moveTo(offset.x, offset.y + 10 * opts.pixelRatio);
     context.lineTo(offset.x - arrowWidth, offset.y + 10 * opts.pixelRatio - 5 * opts.pixelRatio);
@@ -2079,7 +2088,7 @@ function drawToolTip(textList, offset, opts, config, context, eachSpacing, xAxis
   textList.forEach(function(item, index) {
     if (item.color !== null) {
       context.beginPath();
-      context.setFillStyle(item.color);
+      context.fillStyle=item.color;
       var startX = offset.x + arrowWidth + 2 * config.toolTipPadding;
       var startY = offset.y + (config.toolTipLineHeight - config.fontSize) / 2 + config.toolTipLineHeight * index +
         config.toolTipPadding + 1;
@@ -2102,7 +2111,7 @@ function drawToolTip(textList, offset, opts, config, context, eachSpacing, xAxis
       config.toolTipPadding;
     context.beginPath();
     context.setFontSize(config.fontSize);
-    context.setFillStyle(toolTipOption.fontColor);
+    context.fillStyle=toolTipOption.fontColor;
     context.fillText(item.text, startX, startY + config.fontSize);
     context.closePath();
     context.stroke();
@@ -2114,7 +2123,7 @@ function drawYAxisTitle(title, opts, config, context) {
   context.save();
   context.beginPath();
   context.setFontSize(config.fontSize);
-  context.setFillStyle(opts.yAxis.titleFontColor || '#333333');
+  context.fillStyle=opts.yAxis.titleFontColor || '#333333';
   context.translate(0, opts.height);
   context.rotate(-90 * Math.PI / 180);
   context.fillText(title, startX, opts.padding[3] + 0.5 * config.fontSize);
@@ -2169,9 +2178,10 @@ function drawColumnDataPoints(series, opts, config, context) {
 					let item=points[i];
           if (item !== null && i>leftNum && i<rightNum) {
             context.beginPath();
-            context.setStrokeStyle(item.color || eachSeries.color);
-            context.setLineWidth(1)
-            context.setFillStyle(item.color || eachSeries.color);
+            context.strokeStyle=item.color || eachSeries.color;
+            // context.setLineWidth(1)
+            context.lineWidth=1;
+            context.fillStyle=item.color || eachSeries.color;
             var startX = item.x - item.width / 2;
             var height = opts.height - item.y - opts.area[2];
             context.moveTo(startX-1, item.y);
@@ -2195,7 +2205,7 @@ function drawColumnDataPoints(series, opts, config, context) {
         	let item=points[i];
           if (item !== null && i>leftNum && i<rightNum) {
             context.beginPath();
-            context.setFillStyle(item.color || eachSeries.color);
+            context.fillStyle=item.color || eachSeries.color;
             var startX = item.x - item.width / 2 + 1;
             var height = opts.height - item.y - opts.area[2];
             var height0 = opts.height - item.y0 - opts.area[2];
@@ -2220,7 +2230,7 @@ function drawColumnDataPoints(series, opts, config, context) {
             if (item !== null && i>leftNum && i<rightNum) {
               //画背景颜色
               context.beginPath();
-              context.setFillStyle(columnOption.meter.fillColor);
+              context.fillStyle=columnOption.meter.fillColor;
               var startX = item.x - item.width / 2;
               var height = opts.height - item.y - opts.area[2];
               context.moveTo(startX, item.y);
@@ -2230,8 +2240,9 @@ function drawColumnDataPoints(series, opts, config, context) {
               //画边框线
               if (columnOption.meter.border > 0) {
                 context.beginPath();
-                context.setStrokeStyle(eachSeries.color);
-                context.setLineWidth(columnOption.meter.border * opts.pixelRatio);
+                context.strokeStyle=eachSeries.color;
+                // context.setLineWidth(columnOption.meter.border * opts.pixelRatio);
+                context.lineWidth=columnOption.meter.border * opts.pixelRatio;
                 context.moveTo(startX + columnOption.meter.border * 0.5, item.y + height);
                 context.lineTo(startX + columnOption.meter.border * 0.5, item.y + columnOption.meter.border * 0.5);
                 context.lineTo(startX + item.width - columnOption.meter.border * 0.5, item.y + columnOption.meter.border * 0.5);
@@ -2245,7 +2256,7 @@ function drawColumnDataPoints(series, opts, config, context) {
           	let item=points[i];
             if (item !== null && i>leftNum && i<rightNum) {
               context.beginPath();
-              context.setFillStyle(item.color || eachSeries.color);
+              context.fillStyle=item.color || eachSeries.color;
               var startX = item.x - item.width / 2;
               var height = opts.height - item.y - opts.area[2];
               context.moveTo(startX, item.y);
@@ -2349,8 +2360,9 @@ function drawCandleDataPoints(series, seriesMA, opts, config, context) {
 			for(let i=0;i<splitPointList.length;i++){
 				let points=splitPointList[i];
 				context.beginPath();
-				context.setStrokeStyle(eachSeries.color);
-				context.setLineWidth(1);
+				context.strokeStyle=eachSeries.color;
+				// context.setLineWidth(1);
+				context.lineWidth=1;
 				if (points.length === 1) {
 					context.moveTo(points[0].x, points[0].y);
 					context.arc(points[0].x, points[0].y, 1, 0, 2 * Math.PI);
@@ -2392,9 +2404,10 @@ function drawCandleDataPoints(series, seriesMA, opts, config, context) {
 				context.beginPath();
 				//如果上涨
 				if (data[i][1] - data[i][0] > 0) {
-					context.setStrokeStyle(candleOption.color.upLine);
-					context.setFillStyle(candleOption.color.upFill);
-					context.setLineWidth(1 * opts.pixelRatio);
+					context.strokeStyle=candleOption.color.upLine;
+					context.fillStyle=candleOption.color.upFill;
+					// context.setLineWidth(1 * opts.pixelRatio);
+					context.lineWidth=1 * opts.pixelRatio;
 					context.moveTo(item[3].x, item[3].y); //顶点
 					context.lineTo(item[1].x, item[1].y); //收盘中间点
 					context.lineTo(item[1].x - eachSpacing / 4, item[1].y); //收盘左侧点
@@ -2407,9 +2420,10 @@ function drawCandleDataPoints(series, seriesMA, opts, config, context) {
 					context.lineTo(item[1].x, item[1].y); //收盘中间点
 					context.moveTo(item[3].x, item[3].y); //顶点
 				} else {
-					context.setStrokeStyle(candleOption.color.downLine);
-					context.setFillStyle(candleOption.color.downFill);
-					context.setLineWidth(1 * opts.pixelRatio);
+					context.strokeStyle=candleOption.color.downLine;
+					context.fillStyle=candleOption.color.downFill;
+					// context.setLineWidth(1 * opts.pixelRatio);
+					context.lineWidth=1 * opts.pixelRatio;
 					context.moveTo(item[3].x, item[3].y); //顶点
 					context.lineTo(item[0].x, item[0].y); //开盘中间点
 					context.lineTo(item[0].x - eachSpacing / 4, item[0].y); //开盘左侧点
@@ -2478,16 +2492,17 @@ function drawAreaDataPoints(series, opts, config, context) {
       let points = splitPointList[i];
       // 绘制区域数
       context.beginPath();
-      context.setStrokeStyle(hexToRgb(eachSeries.color, areaOption.opacity));
+      context.strokeStyle=hexToRgb(eachSeries.color, areaOption.opacity);
 			if(areaOption.gradient){
 				let gradient = context.createLinearGradient(0, opts.area[0], 0, opts.height-opts.area[2]);
 				gradient.addColorStop('0', hexToRgb(eachSeries.color, areaOption.opacity));
 				gradient.addColorStop('1.0',hexToRgb("#FFFFFF", 0.1));
-				context.setFillStyle(gradient);
+				context.fillStyle=gradient;
 			}else{
-				context.setFillStyle(hexToRgb(eachSeries.color, areaOption.opacity));
+				context.fillStyle=hexToRgb(eachSeries.color, areaOption.opacity);
 			}
-      context.setLineWidth(areaOption.width * opts.pixelRatio);
+      // context.setLineWidth(areaOption.width * opts.pixelRatio);
+      context.lineWidth=areaOption.width * opts.pixelRatio;
       if (points.length > 1) {
         let firstPoint = points[0];
         let lastPoint = points[points.length - 1];
@@ -2540,8 +2555,9 @@ function drawAreaDataPoints(series, opts, config, context) {
 				  context.setLineDash([dashLength, dashLength]);
 				}
         context.beginPath();
-        context.setStrokeStyle(eachSeries.color);
-        context.setLineWidth(areaOption.width * opts.pixelRatio);
+        context.strokeStyle=eachSeries.color;
+        // context.setLineWidth(areaOption.width * opts.pixelRatio);
+        context.lineWidth=areaOption.width * opts.pixelRatio;
         if (points.length === 1) {
           context.moveTo(points[0].x, points[0].y);
           context.arc(points[0].x, points[0].y, 1, 0, 2 * Math.PI);
@@ -2645,8 +2661,9 @@ function drawLineDataPoints(series, opts, config, context) {
 		  context.setLineDash([dashLength, dashLength]);
 		}
 		context.beginPath();
-		context.setStrokeStyle(eachSeries.color);
-		context.setLineWidth(lineOption.width);
+		context.strokeStyle=eachSeries.color;
+		// context.setLineWidth(lineOption.width);
+		context.lineWidth=lineOption.width;
 		
     splitPointList.forEach(function(points, index) {
 			
@@ -2762,9 +2779,10 @@ function drawMixDataPoints(series, opts, config, context) {
       	let item=points[i];
         if (item !== null && i>leftNum && i<rightNum) {
           context.beginPath();
-          context.setStrokeStyle(item.color || eachSeries.color);
-          context.setLineWidth(1)
-          context.setFillStyle(item.color || eachSeries.color);
+          context.strokeStyle=item.color || eachSeries.color;
+          // context.setLineWidth(1)
+          context.lineWidth=1;
+          context.fillStyle=item.color || eachSeries.color;
           var startX = item.x - item.width / 2;
           var height = opts.height - item.y - opts.area[2];
           context.moveTo(startX, item.y);
@@ -2791,9 +2809,10 @@ function drawMixDataPoints(series, opts, config, context) {
         let points = splitPointList[i];
         // 绘制区域数据
         context.beginPath();
-        context.setStrokeStyle(eachSeries.color);
-        context.setFillStyle(hexToRgb(eachSeries.color, 0.2));
-        context.setLineWidth(2 * opts.pixelRatio);
+        context.strokeStyle=eachSeries.color;
+        context.fillStyle=hexToRgb(eachSeries.color, 0.2);
+        // context.setLineWidth(2 * opts.pixelRatio);
+        context.lineWidth=2 * opts.pixelRatio;
         if (points.length > 1) {
           var firstPoint = points[0];
           let lastPoint = points[points.length - 1];
@@ -2849,8 +2868,9 @@ function drawMixDataPoints(series, opts, config, context) {
 				  context.setLineDash([dashLength, dashLength]);
 				}
         context.beginPath();
-        context.setStrokeStyle(eachSeries.color);
-        context.setLineWidth(2 * opts.pixelRatio);
+        context.strokeStyle=eachSeries.color;
+        // context.setLineWidth(2 * opts.pixelRatio);
+        context.lineWidth=2 * opts.pixelRatio;
         if (points.length === 1) {
           context.moveTo(points[0].x, points[0].y);
           context.arc(points[0].x, points[0].y, 1, 0, 2 * Math.PI);
@@ -2970,16 +2990,18 @@ function drawXAxis(categories, opts, config, context) {
     }
     context.beginPath();
     context.setLineCap('round');
-    context.setLineWidth(6 * opts.pixelRatio);
-    context.setStrokeStyle(opts.xAxis.scrollBackgroundColor || "#EFEBEF");
+    // context.setLineWidth(6 * opts.pixelRatio);
+    context.lineWidth=6 * opts.pixelRatio;
+    context.strokeStyle=opts.xAxis.scrollBackgroundColor || "#EFEBEF";
     context.moveTo(startX, scrollY);
     context.lineTo(endX, scrollY);
     context.stroke();
     context.closePath();
     context.beginPath();
     context.setLineCap('round');
-    context.setLineWidth(6 * opts.pixelRatio);
-    context.setStrokeStyle(opts.xAxis.scrollColor || "#A6A6A6");
+    // context.setLineWidth(6 * opts.pixelRatio);
+    context.lineWidth=6 * opts.pixelRatio;
+    context.strokeStyle=opts.xAxis.scrollColor || "#A6A6A6";
     context.moveTo(startX + scrollLeft, scrollY);
     context.lineTo(startX + scrollLeft + scrollWidth, scrollY);
     context.stroke();
@@ -2995,9 +3017,10 @@ function drawXAxis(categories, opts, config, context) {
 	
 	//绘制X轴刻度线
 	if (opts.xAxis.calibration === true) {
-		context.setStrokeStyle(opts.xAxis.gridColor || "#cccccc");
+		context.strokeStyle=opts.xAxis.gridColor || "#cccccc";
 		context.setLineCap('butt');
-		context.setLineWidth(1 * opts.pixelRatio);
+		// context.setLineWidth(1 * opts.pixelRatio);
+		context.lineWidth=1 * opts.pixelRatio;
 	  xAxisPoints.forEach(function(item, index) {
 	    if (index > 0) {
 	      context.beginPath();
@@ -3010,9 +3033,10 @@ function drawXAxis(categories, opts, config, context) {
 	}
 	//绘制X轴网格
   if (opts.xAxis.disableGrid !== true) {
-    context.setStrokeStyle(opts.xAxis.gridColor || "#cccccc");
+    context.strokeStyle=opts.xAxis.gridColor || "#cccccc";
     context.setLineCap('butt');
-    context.setLineWidth(1 * opts.pixelRatio);
+    // context.setLineWidth(1 * opts.pixelRatio);
+    context.lineWidth=1 * opts.pixelRatio;
     if (opts.xAxis.gridType == 'dash') {
       context.setLineDash([opts.xAxis.dashLength, opts.xAxis.dashLength]);
     }
@@ -3071,7 +3095,7 @@ function drawXAxis(categories, opts, config, context) {
         }
         context.beginPath();
         context.setFontSize(xAxisFontSize);
-        context.setFillStyle(opts.xAxis.fontColor || '#666666');
+        context.fillStyle=opts.xAxis.fontColor || '#666666';
         context.fillText(item, xAxisPoints[index] + offset, startY + xAxisFontSize + (config.xAxisHeight - scrollHeight - xAxisFontSize) / 2);
         context.closePath();
         context.stroke();
@@ -3082,7 +3106,7 @@ function drawXAxis(categories, opts, config, context) {
         context.save();
         context.beginPath();
         context.setFontSize(xAxisFontSize);
-        context.setFillStyle(opts.xAxis.fontColor || '#666666');
+        context.fillStyle=opts.xAxis.fontColor || '#666666';
         var textWidth = measureText(item);
         var offset = - textWidth;
         if(boundaryGap == 'center'){
@@ -3106,8 +3130,9 @@ function drawXAxis(categories, opts, config, context) {
 	//绘制X轴轴线
   if(opts.xAxis.axisLine){
     context.beginPath();
-    context.setStrokeStyle(opts.xAxis.axisLineColor);
-    context.setLineWidth(1 * opts.pixelRatio);
+    context.strokeStyle=opts.xAxis.axisLineColor;
+    // context.setLineWidth(1 * opts.pixelRatio);
+    context.lineWidth=1 * opts.pixelRatio;
     context.moveTo(startX,opts.height-opts.area[2]);
     context.lineTo(endX,opts.height-opts.area[2]);
     context.stroke();
@@ -3139,8 +3164,9 @@ function drawYAxisGrid(categories, opts, config, context) {
   if (opts.yAxis.gridType == 'dash') {
     context.setLineDash([opts.yAxis.dashLength, opts.yAxis.dashLength]);
   }
-  context.setStrokeStyle(opts.yAxis.gridColor);
-  context.setLineWidth(1 * opts.pixelRatio);
+  context.strokeStyle=opts.yAxis.gridColor;
+  // context.setLineWidth(1 * opts.pixelRatio);
+  context.lineWidth=1 * opts.pixelRatio;
   points.forEach(function(item, index) {
     context.beginPath();
     context.moveTo(startX, item);
@@ -3170,7 +3196,7 @@ function drawYAxis(series, opts, config, context) {
 	}
   // set YAxis background
   context.beginPath();
-  context.setFillStyle(opts.background || '#ffffff');
+  context.fillStyle=opts.background || '#ffffff';
   if (opts._scrollDistance_ < 0) {
     context.fillRect(0, 0, startX, fillEndY);
   }
@@ -3199,9 +3225,10 @@ function drawYAxis(series, opts, config, context) {
         var pos = points[index] ? points[index] : endY;
         context.beginPath();
         context.setFontSize(yAxisFontSize);
-        context.setLineWidth(1*opts.pixelRatio);
-        context.setStrokeStyle(yData.axisLineColor||'#cccccc');
-        context.setFillStyle(yData.fontColor|| '#666666');
+        // context.setLineWidth(1*opts.pixelRatio);
+        context.lineWidth=1*opts.pixelRatio;
+        context.strokeStyle=yData.axisLineColor||'#cccccc';
+        context.fillStyle=yData.fontColor|| '#666666';
         if(yAxisWidth.position=='left'){
           context.fillText(String(item), tStartLeft - yAxisWidth.width , pos + yAxisFontSize / 2);
           //画刻度线
@@ -3223,8 +3250,9 @@ function drawYAxis(series, opts, config, context) {
       //画Y轴轴线
       if (yData.axisLine!==false) {
         context.beginPath();
-        context.setStrokeStyle(yData.axisLineColor||'#cccccc');
-        context.setLineWidth(1 * opts.pixelRatio);
+        context.strokeStyle=yData.axisLineColor||'#cccccc';
+        // context.setLineWidth(1 * opts.pixelRatio);
+        context.lineWidth=1 * opts.pixelRatio;
         if(yAxisWidth.position=='left'){
           context.moveTo(tStartLeft,opts.height-opts.area[2]);
           context.lineTo(tStartLeft,opts.area[0]);
@@ -3242,7 +3270,7 @@ function drawYAxis(series, opts, config, context) {
         let title = yData.title;
         context.beginPath();
         context.setFontSize(titleFontSize);
-        context.setFillStyle(yData.titleFontColor || '#666666');
+        context.fillStyle=yData.titleFontColor || '#666666';
         if(yAxisWidth.position=='left'){
           context.fillText(title, tStartLeft - measureText(title,titleFontSize)/2, opts.area[0]-10*opts.pixelRatio);
         }else{
@@ -3276,9 +3304,10 @@ function drawLegend(series, opts, config, context, chartData) {
 
   //画背景及边框
   context.beginPath();
-  context.setLineWidth(opts.legend.borderWidth);
-  context.setStrokeStyle(opts.legend.borderColor);
-  context.setFillStyle(opts.legend.backgroundColor);
+  // context.setLineWidth(opts.legend.borderWidth);
+  context.lineWidth=opts.legend.borderWidth;
+  context.strokeStyle=opts.legend.borderColor;
+  context.fillStyle=opts.legend.backgroundColor;
   context.moveTo(legendArea.start.x, legendArea.start.y);
   context.rect(legendArea.start.x, legendArea.start.y, legendArea.width, legendArea.height);
   context.closePath();
@@ -3313,9 +3342,10 @@ function drawLegend(series, opts, config, context, chartData) {
       item.area[1] = startY;
       item.area[3] = startY + lineHeight;
       context.beginPath();
-      context.setLineWidth(1 * opts.pixelRatio);
-      context.setStrokeStyle(item.show ? item.color : opts.legend.hiddenColor);
-      context.setFillStyle(item.show ? item.color : opts.legend.hiddenColor);
+      // context.setLineWidth(1 * opts.pixelRatio);
+      context.lineWidth=1 * opts.pixelRatio;
+      context.strokeStyle=item.show ? item.color : opts.legend.hiddenColor;
+      context.fillStyle=item.show ? item.color : opts.legend.hiddenColor;
       switch (item.legendShape) {
         case 'line':
           context.moveTo(startX, startY + 0.5 * lineHeight - 2 * opts.pixelRatio);
@@ -3354,7 +3384,7 @@ function drawLegend(series, opts, config, context, chartData) {
       let fontTrans = 0.5 * lineHeight + 0.5 * fontSize - 2;
       context.beginPath();
       context.setFontSize(fontSize);
-      context.setFillStyle(item.show ? opts.legend.fontColor : opts.legend.hiddenColor);
+      context.fillStyle=item.show ? opts.legend.fontColor : opts.legend.hiddenColor;
       context.fillText(item.name, startX, startY + fontTrans);
       context.closePath();
       context.stroke();
@@ -3404,7 +3434,7 @@ function drawPieDataPoints(series, opts, config, context) {
     if (opts.tooltip) {
       if (opts.tooltip.index == seriesIndex) {
         context.beginPath();
-        context.setFillStyle(hexToRgb(eachSeries.color, opts.extra.pie.activeOpacity || 0.5));
+        context.fillStyle=hexToRgb(eachSeries.color, opts.extra.pie.activeOpacity || 0.5);
         context.moveTo(centerPosition.x, centerPosition.y);
         context.arc(centerPosition.x, centerPosition.y, eachSeries._radius_ + activeRadius, eachSeries._start_,
           eachSeries._start_ + 2 *
@@ -3414,10 +3444,11 @@ function drawPieDataPoints(series, opts, config, context) {
       }
     }
     context.beginPath();
-    context.setLineWidth(pieOption.borderWidth * opts.pixelRatio);
+    // context.setLineWidth(pieOption.borderWidth * opts.pixelRatio);
+    context.lineWidth=pieOption.borderWidth * opts.pixelRatio;
     context.lineJoin = "round";
-    context.setStrokeStyle(pieOption.borderColor);
-    context.setFillStyle(eachSeries.color);
+    context.strokeStyle=pieOption.borderColor;
+    context.fillStyle=eachSeries.color;
     context.moveTo(centerPosition.x, centerPosition.y);
     context.arc(centerPosition.x, centerPosition.y, eachSeries._radius_, eachSeries._start_, eachSeries._start_ + 2 * eachSeries._proportion_ * Math.PI);
     context.closePath();
@@ -3433,7 +3464,7 @@ function drawPieDataPoints(series, opts, config, context) {
       innerPieWidth = Math.max(0, radius - opts.extra.pie.ringWidth);
     }
     context.beginPath();
-    context.setFillStyle(opts.background || '#ffffff');
+    context.fillStyle=opts.background || '#ffffff';
     context.moveTo(centerPosition.x, centerPosition.y);
     context.arc(centerPosition.x, centerPosition.y, innerPieWidth, 0, 2 * Math.PI);
     context.closePath();
@@ -3500,7 +3531,7 @@ function drawRoseDataPoints(series, opts, config, context) {
     if (opts.tooltip) {
       if (opts.tooltip.index == seriesIndex) {
         context.beginPath();
-        context.setFillStyle(hexToRgb(eachSeries.color, roseOption.activeOpacity || 0.5));
+        context.fillStyle=hexToRgb(eachSeries.color, roseOption.activeOpacity || 0.5);
         context.moveTo(centerPosition.x, centerPosition.y);
         context.arc(centerPosition.x, centerPosition.y, activeRadius + eachSeries._radius_, eachSeries._start_,
           eachSeries._start_ + 2 * eachSeries._rose_proportion_ * Math.PI);
@@ -3509,10 +3540,11 @@ function drawRoseDataPoints(series, opts, config, context) {
       }
     }
     context.beginPath();
-    context.setLineWidth(roseOption.borderWidth * opts.pixelRatio);
+    // context.setLineWidth(roseOption.borderWidth * opts.pixelRatio);
+    context.lineWidth = roseOption.borderWidth * opts.pixelRatio; 
     context.lineJoin = "round";
-    context.setStrokeStyle(roseOption.borderColor);
-    context.setFillStyle(eachSeries.color);
+    context.strokeStyle=roseOption.borderColor;
+    context.fillStyle=eachSeries.color;
     context.moveTo(centerPosition.x, centerPosition.y);
     context.arc(centerPosition.x, centerPosition.y, eachSeries._radius_, eachSeries._start_, eachSeries._start_ + 2 *
       eachSeries._rose_proportion_ * Math.PI);
@@ -3578,8 +3610,9 @@ function drawArcbarDataPoints(series, opts, config, context) {
   for (let i = 0; i < series.length; i++) {
     let eachSeries = series[i];
 		//背景颜色
-		context.setLineWidth(arcbarOption.width);
-		context.setStrokeStyle(arcbarOption.backgroundColor || '#E9E9E9');
+		//context.setLineWidth(arcbarOption.width);
+        context.lineWidth = arcbarOption.width; 
+		context.strokeStyle=arcbarOption.backgroundColor || '#E9E9E9';
 		context.setLineCap('round');
 		context.beginPath();
 		if (arcbarOption.type == 'default') {
@@ -3588,9 +3621,10 @@ function drawArcbarDataPoints(series, opts, config, context) {
 		  context.arc(centerPosition.x, centerPosition.y, radius-(arcbarOption.width+arcbarOption.gap)*i, 0, 2 * Math.PI, false);
 		}
 		context.stroke();
-		//进度条
-    context.setLineWidth(arcbarOption.width);
-    context.setStrokeStyle(eachSeries.color);
+      //进度条
+    //context.setLineWidth(arcbarOption.width);
+    context.setLineWidth = arcbarOption.width;
+    context.strokeStyle=eachSeries.color;
     context.setLineCap('round');
     context.beginPath();
     context.arc(centerPosition.x, centerPosition.y, radius-(arcbarOption.width+arcbarOption.gap)*i, arcbarOption.startAngle * Math.PI, eachSeries._proportion_ * Math.PI, false);
@@ -3656,12 +3690,13 @@ function drawGaugeDataPoints(categories, series, opts, config, context) {
 		//配置渐变填充（起点：中心点向上减半径；结束点中心点向下加半径）
 		gradient.addColorStop('0', hexToRgb(series[0].color, 0.3));
 		gradient.addColorStop('1.0',hexToRgb("#FFFFFF", 0.1));
-		context.setFillStyle(gradient);
+		context.fillStyle=gradient;
 		context.arc(centerPosition.x, centerPosition.y, pieRadius, 0, 2*Math.PI, false);
 		context.fill();
-		//画进度条背景
-		context.setLineWidth(gaugeOption.width);
-		context.setStrokeStyle(hexToRgb(series[0].color, 0.3));
+        //画进度条背景
+        //context.setLineWidth(gaugeOption.width);
+        context.lineWidth=gaugeOption.width;
+		context.strokeStyle=hexToRgb(series[0].color, 0.3);
 		context.setLineCap('round');
 		context.beginPath();
 		context.arc(centerPosition.x, centerPosition.y, innerRadius , gaugeOption.startAngle * Math.PI, gaugeOption.endAngle *Math.PI, false);
@@ -3682,11 +3717,12 @@ function drawGaugeDataPoints(categories, series, opts, config, context) {
 		  context.beginPath();
 			//刻度线随进度变色
 			if(proc>(i/len)){
-				context.setStrokeStyle(hexToRgb(series[0].color, 1));
+				context.strokeStyle=hexToRgb(series[0].color, 1);
 			}else{
-				context.setStrokeStyle(hexToRgb(series[0].color, 0.3));
-			}
-		  context.setLineWidth(3 * opts.pixelRatio);
+				context.strokeStyle=hexToRgb(series[0].color, 0.3);
+            }
+            //context.setLineWidth(3 * opts.pixelRatio);
+            context.lineWidth=3 * opts.pixelRatio;
 		  context.moveTo(startX, 0);
 		  context.lineTo(endX, 0);
 		  context.stroke();
@@ -3695,9 +3731,10 @@ function drawGaugeDataPoints(categories, series, opts, config, context) {
 		context.restore();
 		
 		//## 第三步画进度条
-		series = getArcbarDataPoints(series, gaugeOption, process);
-		context.setLineWidth(gaugeOption.width);
-		context.setStrokeStyle(series[0].color);
+        series = getArcbarDataPoints(series, gaugeOption, process);
+        // context.setLineWidth(gaugeOption.width);
+        context.lineWidth=gaugeOption.width;
+		context.strokeStyle=series[0].color;
 		context.setLineCap('round');
 		context.beginPath();
 		context.arc(centerPosition.x, centerPosition.y, innerRadius , gaugeOption.startAngle * Math.PI, series[0]._proportion_ *Math.PI, false);
@@ -3709,18 +3746,20 @@ function drawGaugeDataPoints(categories, series, opts, config, context) {
 		context.translate(centerPosition.x, centerPosition.y);
 		context.rotate((series[0]._proportion_ - 1) * Math.PI);
 		context.beginPath();
-		context.setLineWidth(gaugeOption.width/3);
+		//context.setLineWidth(gaugeOption.width/3);
+		context.lineWidth=gaugeOption.width/3;
 		let gradient3 = context.createLinearGradient(0, -pointerRadius*0.6, 0 , pointerRadius*0.6);
 		gradient3.addColorStop('0', hexToRgb('#FFFFFF', 0));
 		gradient3.addColorStop('0.5', hexToRgb(series[0].color, 1));
 		gradient3.addColorStop('1.0', hexToRgb('#FFFFFF', 0));
-		context.setStrokeStyle(gradient3);
+		context.strokeStyle=gradient3;
 		context.arc(0, 0, pointerRadius , 0.85* Math.PI, 1.15 * Math.PI, false);
 		context.stroke();
 		context.beginPath();
-		context.setLineWidth(1);
-		context.setStrokeStyle(series[0].color);
-		context.setFillStyle(series[0].color);
+		//context.setLineWidth(1);
+		context.lineWidth=1;
+		context.strokeStyle=series[0].color;
+		context.fillStyle=series[0].color;
 		context.moveTo(-pointerRadius-gaugeOption.width/3/2,-4);
 		context.lineTo(-pointerRadius-gaugeOption.width/3/2-4,0);
 		context.lineTo(-pointerRadius-gaugeOption.width/3/2,4);
@@ -3732,12 +3771,13 @@ function drawGaugeDataPoints(categories, series, opts, config, context) {
 	//default百度样式
 	}else{
 		//画背景
-		context.setLineWidth(gaugeOption.width);
+		//context.setLineWidth(gaugeOption.width);
+		context.lineWidth=gaugeOption.width;
 		context.setLineCap('butt');
 		for (let i = 0; i < categories.length; i++) {
 		  let eachCategories = categories[i];
 		  context.beginPath();
-		  context.setStrokeStyle(eachCategories.color);
+		  context.strokeStyle=eachCategories.color;
 		  context.arc(centerPosition.x, centerPosition.y, radius, eachCategories._startAngle_ * Math.PI, eachCategories._endAngle_ *Math.PI, false);
 		  context.stroke();
 		}
@@ -3756,8 +3796,9 @@ function drawGaugeDataPoints(categories, series, opts, config, context) {
 		
 		for (let i = 0; i < gaugeOption.splitLine.splitNumber + 1; i++) {
 		  context.beginPath();
-		  context.setStrokeStyle(gaugeOption.splitLine.color);
-		  context.setLineWidth(2 * opts.pixelRatio);
+		  context.strokeStyle=gaugeOption.splitLine.color;
+		  //context.setLineWidth(2 * opts.pixelRatio);
+		  context.lineWidth=2 * opts.pixelRatio;
 		  context.moveTo(startX, 0);
 		  context.lineTo(endX, 0);
 		  context.stroke();
@@ -3771,8 +3812,9 @@ function drawGaugeDataPoints(categories, series, opts, config, context) {
 		
 		for (let i = 0; i < gaugeOption.splitLine.splitNumber * gaugeOption.splitLine.childNumber + 1; i++) {
 		  context.beginPath();
-		  context.setStrokeStyle(gaugeOption.splitLine.color);
-		  context.setLineWidth(1 * opts.pixelRatio);
+		  context.strokeStyle=gaugeOption.splitLine.color;
+		  //context.setLineWidth(1 * opts.pixelRatio);
+		  context.lineWidth=1 * opts.pixelRatio;
 		  context.moveTo(startX, 0);
 		  context.lineTo(childendX, 0);
 		  context.stroke();
@@ -3789,7 +3831,7 @@ function drawGaugeDataPoints(categories, series, opts, config, context) {
 		  context.translate(centerPosition.x, centerPosition.y);
 		  context.rotate((eachSeries._proportion_ - 1) * Math.PI);
 		  context.beginPath();
-		  context.setFillStyle(eachSeries.color);
+		  context.fillStyle=eachSeries.color;
 		  context.moveTo(gaugeOption.pointer.width, 0);
 		  context.lineTo(0, -gaugeOption.pointer.width / 2);
 		  context.lineTo(-innerRadius, 0);
@@ -3798,7 +3840,7 @@ function drawGaugeDataPoints(categories, series, opts, config, context) {
 		  context.closePath();
 		  context.fill();
 		  context.beginPath();
-		  context.setFillStyle('#FFFFFF');
+		  context.fillStyle='#FFFFFF';
 		  context.arc(0, 0, gaugeOption.pointer.width / 6, 0, 2 * Math.PI, false);
 		  context.fill();
 		  context.restore();
@@ -3848,8 +3890,9 @@ function drawRadarDataPoints(series, opts, config, context) {
 
   // draw grid
   context.beginPath();
-  context.setLineWidth(1 * opts.pixelRatio);
-  context.setStrokeStyle(radarOption.gridColor);
+  //context.setLineWidth(1 * opts.pixelRatio);
+  context.lineWidth=1 * opts.pixelRatio;
+  context.strokeStyle=radarOption.gridColor;
   coordinateAngle.forEach(function(angle) {
     var pos = convertCoordinateOrigin(radius * Math.cos(angle), radius * Math.sin(angle), centerPosition);
     context.moveTo(centerPosition.x, centerPosition.y);
@@ -3862,8 +3905,9 @@ function drawRadarDataPoints(series, opts, config, context) {
   var _loop = function _loop(i) {
     var startPos = {};
     context.beginPath();
-    context.setLineWidth(1 * opts.pixelRatio);
-    context.setStrokeStyle(radarOption.gridColor);
+    //context.setLineWidth(1 * opts.pixelRatio);
+    context.lineWidth=1 * opts.pixelRatio;
+    context.strokeStyle=radarOption.gridColor;
     coordinateAngle.forEach(function(angle, index) {
       var pos = convertCoordinateOrigin(radius / radarOption.gridCount * i * Math.cos(angle), radius / radarOption.gridCount * i * Math.sin(angle), centerPosition);
       if (index === 0) {
@@ -3887,7 +3931,7 @@ function drawRadarDataPoints(series, opts, config, context) {
   radarDataPoints.forEach(function(eachSeries, seriesIndex) {
     // 绘制区域数据
     context.beginPath();
-    context.setFillStyle(hexToRgb(eachSeries.color, radarOption.opacity));
+    context.fillStyle=hexToRgb(eachSeries.color, radarOption.opacity);
     eachSeries.data.forEach(function(item, index) {
       if (index === 0) {
         context.moveTo(item.position.x, item.position.y);
@@ -4047,18 +4091,19 @@ function drawMapDataPoints(series, opts, config, context) {
   var yoffset=opts.height/2-Math.abs(bounds.yMax - bounds.yMin)/2*scale;
   context.beginPath();
   context.clearRect(0, 0, opts.width, opts.height);
-  context.setFillStyle(opts.background||'#FFFFFF');
+  context.fillStyle=opts.background||'#FFFFFF';
   context.rect(0,0,opts.width,opts.height);
   context.fill();
   for (var i = 0; i < data.length; i++) {
     context.beginPath();
-    context.setLineWidth(mapOption.borderWidth * opts.pixelRatio);
-    context.setStrokeStyle(mapOption.borderColor);
-    context.setFillStyle(hexToRgb(series[i].color, mapOption.fillOpacity));
+    //context.setLineWidth(mapOption.borderWidth * opts.pixelRatio);
+    context.lineWidth=mapOption.borderWidth * opts.pixelRatio;
+    context.strokeStyle=mapOption.borderColor;
+    context.fillStyle=hexToRgb(series[i].color, mapOption.fillOpacity);
     if (opts.tooltip) {
       if (opts.tooltip.index == i ) {
-        context.setStrokeStyle(mapOption.activeBorderColor);
-        context.setFillStyle(hexToRgb(mapOption.activeFillColor, mapOption.activeFillOpacity));
+        context.strokeStyle=mapOption.activeBorderColor;
+        context.fillStyle=hexToRgb(mapOption.activeFillColor, mapOption.activeFillOpacity);
       }
     }
     var coorda = data[i].geometry.coordinates
@@ -4089,7 +4134,7 @@ function drawMapDataPoints(series, opts, config, context) {
         let text=data[i].properties.name;
         context.beginPath();
         context.setFontSize(fontSize)
-        context.setFillStyle(data[i].textColor||'#666666')
+        context.fillStyle=data[i].textColor||'#666666';
         context.fillText(text, point.x-measureText(text,fontSize)/2, point.y+fontSize/2);
         context.closePath();
         context.stroke();
@@ -4189,7 +4234,7 @@ function drawWordCloudDataPoints(series, opts, config, context) {
   },opts.extra.word);
   
   context.beginPath();
-  context.setFillStyle(opts.background||'#FFFFFF');
+  context.fillStyle=opts.background||'#FFFFFF';
   context.rect(0,0,opts.width,opts.height);
   context.fill();
   context.save();
@@ -4205,8 +4250,8 @@ function drawWordCloudDataPoints(series, opts, config, context) {
       let tHeight = points[i].textSize;
       let tWidth = measureText(text,tHeight);
       context.beginPath();
-      context.setStrokeStyle(points[i].color);
-      context.setFillStyle(points[i].color);
+      context.strokeStyle=points[i].color;
+      context.fillStyle=points[i].color;
       context.setFontSize(tHeight);
       if(points[i].rotate){
         if(points[i].areav[0]>0){
@@ -4267,7 +4312,7 @@ function drawFunnelDataPoints(series, opts, config, context) {
       if (opts.tooltip) {
         if (opts.tooltip.index == i) {
           context.beginPath();
-          context.setFillStyle(hexToRgb(series[i].color, funnelOption.activeOpacity));
+          context.fillStyle=hexToRgb(series[i].color, funnelOption.activeOpacity);
           context.moveTo(-activeWidth, 0);
           context.lineTo(-series[i].radius-activeWidth, -eachSpacing);
           context.lineTo(series[i].radius+activeWidth, -eachSpacing);
@@ -4279,9 +4324,10 @@ function drawFunnelDataPoints(series, opts, config, context) {
       }
       series[i].funnelArea=[centerPosition.x-series[i].radius,centerPosition.y-eachSpacing,centerPosition.x+series[i].radius,centerPosition.y];
       context.beginPath();
-      context.setLineWidth(funnelOption.borderWidth * opts.pixelRatio);
-      context.setStrokeStyle(funnelOption.borderColor);
-      context.setFillStyle(hexToRgb(series[i].color, funnelOption.fillOpacity));
+      //context.setLineWidth(funnelOption.borderWidth * opts.pixelRatio);
+      context.lineWidth=funnelOption.borderWidth * opts.pixelRatio;
+      context.strokeStyle=funnelOption.borderColor;
+      context.fillStyle=hexToRgb(series[i].color, funnelOption.fillOpacity);
       context.moveTo(0, 0);
       context.lineTo(-series[i].radius, -eachSpacing);
       context.lineTo(series[i].radius, -eachSpacing);
@@ -4295,7 +4341,7 @@ function drawFunnelDataPoints(series, opts, config, context) {
       if (opts.tooltip) {
         if (opts.tooltip.index == i) {
           context.beginPath();
-          context.setFillStyle(hexToRgb(series[i].color, funnelOption.activeOpacity));
+          context.fillStyle=hexToRgb(series[i].color, funnelOption.activeOpacity);
           context.moveTo(0, 0);
           context.lineTo(-series[i-1].radius-activeWidth, 0);
           context.lineTo(-series[i].radius-activeWidth, -eachSpacing);
@@ -4308,9 +4354,10 @@ function drawFunnelDataPoints(series, opts, config, context) {
       }
       series[i].funnelArea=[centerPosition.x-series[i].radius,centerPosition.y-eachSpacing*(i+1),centerPosition.x+series[i].radius,centerPosition.y-eachSpacing*i];
       context.beginPath();
-      context.setLineWidth(funnelOption.borderWidth * opts.pixelRatio);
-      context.setStrokeStyle(funnelOption.borderColor);
-      context.setFillStyle(hexToRgb(series[i].color, funnelOption.fillOpacity));
+      //context.setLineWidth(funnelOption.borderWidth * opts.pixelRatio);
+      context.lineWidth=funnelOption.borderWidth * opts.pixelRatio;
+      context.strokeStyle=funnelOption.borderColor;
+      context.fillStyle=hexToRgb(series[i].color, funnelOption.fillOpacity);
       context.moveTo(0, 0);
       context.lineTo(-series[i-1].radius, 0);
       context.lineTo(-series[i].radius, -eachSpacing);
@@ -4352,9 +4399,10 @@ function drawFunnelText(series, opts, context, eachSpacing, labelAlign,activeWid
       endX=startX+activeWidth*2;
       startY=item.funnelArea[1]+eachSpacing/2;
       fontSize = item.textSize || opts.fontSize;
-      context.setLineWidth(1 * opts.pixelRatio);
-      context.setStrokeStyle(item.color);
-      context.setFillStyle(item.color);
+      //context.setLineWidth(1 * opts.pixelRatio);
+      context.lineWidth=1 * opts.pixelRatio;
+      context.strokeStyle=item.color;
+      context.fillStyle=item.color;
       context.beginPath();
       context.moveTo(startX,startY );
       context.lineTo(endX,startY);
@@ -4367,7 +4415,7 @@ function drawFunnelText(series, opts, context, eachSpacing, labelAlign,activeWid
       context.fill();
       context.beginPath();
       context.setFontSize(fontSize);
-      context.setFillStyle(item.textColor || '#666666');
+      context.fillStyle=item.textColor || '#666666';
       context.fillText(text, endX+5, startY + fontSize/2 -2);
       context.closePath();
       context.stroke();
@@ -4381,9 +4429,10 @@ function drawFunnelText(series, opts, context, eachSpacing, labelAlign,activeWid
       endX=startX-activeWidth*2;
       startY=item.funnelArea[1]+eachSpacing/2;
       fontSize = item.textSize || opts.fontSize;
-      context.setLineWidth(1 * opts.pixelRatio);
-      context.setStrokeStyle(item.color);
-      context.setFillStyle(item.color);
+      //context.setLineWidth(1 * opts.pixelRatio);
+      context.lineWidth=1 * opts.pixelRatio;
+      context.strokeStyle=item.color;
+      context.fillStyle=item.color;
       context.beginPath();
       context.moveTo(startX,startY );
       context.lineTo(endX,startY);
@@ -4396,7 +4445,7 @@ function drawFunnelText(series, opts, context, eachSpacing, labelAlign,activeWid
       context.fill();
       context.beginPath();
       context.setFontSize(fontSize);
-      context.setFillStyle(item.textColor || '#666666');
+      context.fillStyle=item.textColor || '#666666';
       context.fillText(text, endX-5-measureText(text), startY + fontSize/2 -2);
       context.closePath();
       context.stroke();
@@ -5044,11 +5093,11 @@ var Charts = function Charts(opts) {
   this.context = wx.createCanvasContext(opts.canvasId, opts.$this);
   /* 兼容原生H5
   this.context = document.getElementById(opts.canvasId).getContext("2d");
-  this.context.setStrokeStyle = function(e){ return this.strokeStyle=e; }
+  this.context.strokeStyle== function(e){ return this.strokeStyle=e;}
   this.context.setLineWidth = function(e){ return this.lineWidth=e; }
   this.context.setLineCap = function(e){ return this.lineCap=e; }
   this.context.setFontSize = function(e){ return this.font=e+"px sans-serif"; }
-  this.context.setFillStyle = function(e){ return this.fillStyle=e; }
+  this.context=fillStyle = function(e){ return this.fillStyle=e;}
   this.context.draw = function(){ }
   */
 
