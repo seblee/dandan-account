@@ -1,5 +1,7 @@
 // pages/components/index/index.js
-import { parseTime } from '../../../util'
+import {
+  parseTime
+} from '../../../util'
 let globalDefaultCategory = {}
 Component({
   options: {
@@ -19,7 +21,7 @@ Component({
     isEdit: false,
     clickPigNum: 0,
     wordData: null,
-    showPayType: false,
+    showPayType: true,
     showPayTypeDialog: false,
     payType: '支付宝'
   },
@@ -103,7 +105,9 @@ Component({
       })
     },
     bindInput(event) {
-      const { value } = event.detail
+      const {
+        value
+      } = event.detail
       this.setData({
         [`${event.currentTarget.dataset.name}`]: value
       })
@@ -128,11 +132,13 @@ Component({
       return dayMap[date] || ''
     },
     changeTab(event) {
-      const { dataset } = event.currentTarget
+      const {
+        dataset
+      } = event.currentTarget
       this.setData({
         [`active_${dataset.key}`]: dataset.value
       })
-      if (/date/.test(dataset.key)) {        
+      if (/date/.test(dataset.key)) {
         this.setData({
           active_date_time: this.converDate(dataset.value)
         })
@@ -239,7 +245,9 @@ Component({
     },
     // tab.js调用
     dectiveEdit() {
-      const { editBill } = this.data
+      const {
+        editBill
+      } = this.data
       this.setData({
         sum: editBill.money,
         note: editBill.description,
@@ -269,7 +277,9 @@ Component({
     },
     clickPig() {
       const self = this
-      let { clickPigNum } = self.data
+      let {
+        clickPigNum
+      } = self.data
       wx.vibrateShort()
       if (clickPigNum <= 4) {
         clickPigNum++
