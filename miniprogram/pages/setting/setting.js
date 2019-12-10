@@ -17,7 +17,7 @@ Page({
     if (this.data.canSubscribe) {
       if (!status) {
         wx.requestSubscribeMessage({
-          tmplIds: ['29PkwuWSDZ5qCe_bjIAYE8UPbw4A7HIXL_ZNmNCD__s'],
+          tmplIds: ['R4mTlFcEZ_vFihUU6dVddCnZPzF_-oal2ZZ-7Vu_U1U'],
           success(res) {
             console.log('res', res)
             if (res.errMsg === 'requestSubscribeMessage:ok') {

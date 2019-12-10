@@ -62,7 +62,7 @@ exports.main = async (event, context) => {
               value: '记得记账哦'
             }
           },
-          templateId: '29PkwuWSDZ5qCe_bjIAYE8UPbw4A7HIXL_ZNmNCD__s'
+          templateId: 'R4mTlFcEZ_vFihUU6dVddCnZPzF_-oal2ZZ-7Vu_U1U'
         })
       } catch (error) {
         // 如果出现错误，十有八九是因为订阅信息的量消耗完了。

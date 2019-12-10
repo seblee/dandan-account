@@ -247,7 +247,7 @@ Component({
             // 埋点！增加订阅的机会--!!决定还是在账单成功后再增加一个吧
             if (subscribeStatus) {
               wx.requestSubscribeMessage({
-                tmplIds: ['29PkwuWSDZ5qCe_bjIAYE8UPbw4A7HIXL_ZNmNCD__s'],
+                tmplIds: ['R4mTlFcEZ_vFihUU6dVddCnZPzF_-oal2ZZ-7Vu_U1U'],
                 success(res) {
                   if (res.errMsg === 'requestSubscribeMessage:ok') {
                     // 如果订阅成功，则修改状态
