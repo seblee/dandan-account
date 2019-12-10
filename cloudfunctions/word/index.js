@@ -24,7 +24,6 @@ exports.main = async (event, context) => {
         data: res.data[0],
         showPayType: payTypeAuthUsers.includes(wxContext.OPENID),
         payTypeList: [
-          '',
           '支付宝',
           '微信',
           '信用卡',
