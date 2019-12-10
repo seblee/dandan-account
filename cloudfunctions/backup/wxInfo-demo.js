@@ -5,5 +5,5 @@ module.exports = {
   appid: '',
   secret: '',
   // presetEnv: 'release-wifo3', // 测试环境
-  presetEnv: 'dandan-zdm86' // 正式环境
+  presetEnv: 'miniapp-2rsbq' // 正式环境
 }
