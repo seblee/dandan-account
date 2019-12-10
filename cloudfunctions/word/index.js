@@ -18,7 +18,10 @@ exports.main = async (event, context) => {
   if (mode === 'get') {
     try {
       const res = await db.collection("DANDAN_WORD").get()
-      const payTypeAuthUsers = ['owS4l0eJ9NtNF9Xl8QExspW94CS8']
+      const payTypeAuthUsers = [
+        'owS4l0eJ9NtNF9Xl8QExspW94CS8',
+        'owS4l0Znjyc6A7HBniDyA_X09hFE'
+        ]
       return {
         code: 1,
         data: res.data[0],
@@ -46,6 +49,7 @@ exports.main = async (event, context) => {
       // 能够进行设置banner的openId列表
       const authUsers = [
         'owS4l0eJ9NtNF9Xl8QExspW94CS8',
+        'owS4l0Znjyc6A7HBniDyA_X09hFE'
       ]
       if (!authUsers.includes(wxContext.OPENID)) {
         return {
