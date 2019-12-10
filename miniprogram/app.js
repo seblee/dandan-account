@@ -11,7 +11,7 @@ App({
       wx.cloud.init({
         traceUser: true,
         // env: 'release-wifo3', // 测试环境
-         env: 'miniapp-2rsbq' // 正式环境
+        env: 'miniapp-2rsbq' // 正式环境
       })
     }
     // 获取手机信息以配置顶栏

@@ -23,6 +23,14 @@ exports.main = async (event, context) => {
         code: 1,
         data: res.data[0],
         showPayType: payTypeAuthUsers.includes(wxContext.OPENID),
+        payTypeList: [
+          '',
+          '支付宝',
+          '微信',
+          '信用卡',
+          '掌上生活',
+          '招商银行'
+        ],
         message: '获取成功'
       }
     } catch (error) {
@@ -36,7 +44,10 @@ exports.main = async (event, context) => {
   if (mode == 'update') {
     try {
       const { word, expire } = event
-        const authUsers = ['owS4l0eJ9NtNF9Xl8QExspW94CS8']
+      // 能够进行设置banner的openId列表
+      const authUsers = [
+        'owS4l0eJ9NtNF9Xl8QExspW94CS8',
+      ]
       if (!authUsers.includes(wxContext.OPENID)) {
         return {
           code: -1,
@@ -49,13 +60,13 @@ exports.main = async (event, context) => {
         'miniapp-2rsbq': 'f1d27a28-291e-465a-94aa-2eaf5c0797b7'
       }
       const res = await db.collection("DANDAN_WORD").doc(wordId[env])
-      .update({
-        data: {
-          word,
-          show: true,
-          expire
-        }
-      })
+        .update({
+          data: {
+            word,
+            show: true,
+            expire
+          }
+        })
       return {
         code: 1,
         data: null,
