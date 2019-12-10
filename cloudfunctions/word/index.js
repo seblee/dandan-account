@@ -18,7 +18,7 @@ exports.main = async (event, context) => {
   if (mode === 'get') {
     try {
       const res = await db.collection("DANDAN_WORD").get()
-        const payTypeAuthUsers = ['owS4l0eJ9NtNF9Xl8QExspW94CS8']
+      const payTypeAuthUsers = ['owS4l0eJ9NtNF9Xl8QExspW94CS8']
       return {
         code: 1,
         data: res.data[0],
