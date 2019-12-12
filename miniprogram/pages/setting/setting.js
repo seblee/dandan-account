@@ -6,6 +6,8 @@ Page({
     status: null,
     isChangeing: false,
     showAuthDialog: false,
+    isExporting: false,
+    canExport: false,
   },
   onLoad() {
     if (wx.requestSubscribeMessage) {
@@ -111,6 +113,42 @@ Page({
     wx.setClipboardData({
       data: 'https://github.com/GzhiYi/dandan-account',
       success() {},
+    })
+  },
+  onExportFile: debounce(function () {
+    const self = this
+    self.setData({
+      isExporting: true,
+    })
+    wx.cloud.callFunction({
+      name: 'exportFile',
+      data: {},
+      success(res) {
+        if (res.result.code === 1) {
+          wx.cloud.getTempFileURL({
+            fileList: [res.result.data.fileID],
+            success: (tempRes) => {
+              // eslint-disable-next-line no-console
+              console.log(tempRes.fileList)
+              wx.setClipboardData({
+                data: tempRes.fileList[0].tempFileURL,
+                success() {},
+              })
+            },
+          })
+        }
+      },
+      complete() {
+        self.setData({
+          isExporting: false,
+        })
+      },
+    })
+  }, 1000, true),
+  showPreview() {
+    wx.previewImage({
+      current: 'https://6d69-miniapp-2rsbq-1255748898.tcb.qcloud.la/WechatIMG11.jpeg?sign=da4a77d1bdf71ca1ba3a89bcf7be4e23&t=1576116322', // 当前显示图片的http链接
+      urls: ['https://6d69-miniapp-2rsbq-1255748898.tcb.qcloud.la/WechatIMG12.png?sign=c7e1b901fbcb2174483a6eacfb7ee4df&t=1576116297'], // 需要预览的图片http链接列表
     })
   },
 })
