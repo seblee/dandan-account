@@ -54,13 +54,13 @@
   <view class="part">
     <view class="left">一杯奶茶？</view>
     <view class="right dandan" style="background-color: #FFB905;">
-      <view class="title">开源不易，我会尽最大的努力保持单单干净无广告侵扰。</view>
+      <view class="title">开源不易，我会尽最大的努力保持简单干净无广告侵扰。</view>
       <view class="desc">
         <text>希望各位喜欢单单的朋友可以多多分享给好友知道❤️❤️，我也没太多心思去推广啦。</text>
       </view>
       <view style="text-align: center;margin-top: 20rpx;">
         <image
-          src="https://6461-dandan-zdm86-1259814516.tcb.qcloud.la/WechatIMG11.jpeg?sign=bdaed572942b8bc2e7b3a61f7183d743&t=1576081688"
+          src="https://6d69-miniapp-2rsbq-1255748898.tcb.qcloud.la/WechatIMG11.jpeg?sign=da4a77d1bdf71ca1ba3a89bcf7be4e23&t=1576116322"
           style="width: 300rpx;height: 264rpx;border-radius: 12rpx;"
           mode="widthFix"
           bindtap="showPreview"
