@@ -1,9 +1,10 @@
+/* eslint-disable no-console */
 // 云函数入口文件
 const request = require('request')
 const cloud = require('wx-server-sdk')
 const wxInfo = require('./wxInfo')
 
-const intervelTime = 1000 // 1s的时间执行检查文件是否导出完成
+const intervelTime = 10000 // 1s的时间执行检查文件是否导出完成
 cloud.init()
 
 // 获取access token
@@ -24,6 +25,7 @@ async function getAccessToken(appid, secret) {
 
 // 导出数据库到腾讯自带云存储
 async function exportFile(accessToken, collection, env) {
+  console.log('进入exportFile函数：参数', accessToken, collection, env)
   const date = new Date().toISOString()
   return new Promise((resolve, reject) => {
     request.post(
@@ -37,6 +39,7 @@ async function exportFile(accessToken, collection, env) {
         }),
       },
       (err, res, body) => {
+        console.log('进入exportFile回调', err, res, body)
         if (err) reject(err)
         resolve(JSON.parse(body))
       },
@@ -71,6 +74,7 @@ async function waitJobFinished(accessToken, jobId, env) {
 
 // 云函数入口函数
 exports.main = async () => {
+  console.log('进入云函数入口函数！')
   const wxContext = cloud.getWXContext()
   let env = wxContext.ENV === 'local' ? 'release-wifo3' : wxContext.ENV
   // 会有env没有的情况，是真的有！
@@ -84,6 +88,7 @@ exports.main = async () => {
       access_token,
       errcode,
     } = await getAccessToken(wxInfo.appid, wxInfo.secret)
+    console.log('getAccessToken返回', errmsg, access_token, errcode)
     // 判断access_token 返回情况
     if (errmsg && errcode !== 0) {
       throw new Error('获取access_token失败或为空。')
@@ -94,6 +99,7 @@ exports.main = async () => {
       errcode: jobErrCode,
       job_id,
     } = await exportFile(access_token, 'DANDAN_NOTE', env)
+    console.log('exportFile返回', jobErrMsg, jobErrCode, job_id)
     if (jobErrCode !== 0) {
       throw new Error(`创建数据库备份任务失败：${jobErrMsg}`)
     }
@@ -104,9 +110,10 @@ exports.main = async () => {
         jobId: job_id,
       },
     })
+    console.log('备份云函数返回', addJobRes)
 
     const fileUrl = await waitJobFinished(access_token, job_id, env)
-
+    console.log('fileUrl', fileUrl)
     // 将文件链接保存到数据库
     await db.collection('BACKUP').doc(addJobRes._id).update({
       data: {

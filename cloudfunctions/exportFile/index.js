@@ -48,21 +48,21 @@ exports.main = async () => {
     env,
   })
   const cateMap = {}
+  const _ = db.command;
   try {
     // 查询该用户已有分类
-    const getCategoryRes = await cloud.callFunction({
-      name: 'getCategory',
-      data: {},
-    })
-    if (getCategoryRes.result.code === 1) {
-      const categoryList = getCategoryRes.result.data
-      categoryList.forEach((parent) => {
-        parent.children.forEach((child) => {
-          cateMap[child._id] = child
-        })
+    const getCategoryRes = await db.collection('DANDAN_NOTE_CATEGORY')
+      .where({
+        isDel: false,
+        openId: _.eq(wxContext.OPENID).or(_.eq('SYSTEM')),
+      })
+      .get()
+    if (getCategoryRes.data) {
+      const categoryList = getCategoryRes.data
+      categoryList.forEach((cate) => {
+        cateMap[cate._id] = cate
       })
     }
-    // eslint-disable-next-line no-console
   } catch (error) {
     // eslint-disable-next-line no-console
     console.error('获取分类失败啦', error)
@@ -95,8 +95,8 @@ exports.main = async () => {
       const tempInLoop = final[i].data
       for (let j = 0; j < tempInLoop.length; j++) {
         rowData.push([
-          parseTime(tempInLoop[j].createTime, '{y}/{m}/{d}/ {h}:{m}:{s}'),
-          parseTime(tempInLoop[j].noteDate, '{y}/{m}/{d}/'),
+          parseTime(tempInLoop[j].createTime, '{y}/{m}/{d} {h}:{m}:{s}'),
+          parseTime(tempInLoop[j].noteDate, '{y}/{m}/{d}'),
           cateMap[tempInLoop[j].categoryId] ? cateMap[tempInLoop[j].categoryId].categoryName : '杂项',
           tempInLoop[j].flow === 0 ? -tempInLoop[j].money : tempInLoop[j].money,
           tempInLoop[j].description,
@@ -130,7 +130,7 @@ exports.main = async () => {
       const result = excel.execute(conf)
       Buffer.from(result.toString(), 'binary')
       const uplodaRes = await cloud.uploadFile({
-        cloudPath: `download/sheet/小酒记账-账单(${wxContext.OPENID.slice(3, 8)}).xlsx`, // excel文件名称及路径，即云存储中的路径
+        cloudPath: `download/sheet/小酒记账-账单(${wxContext.OPENID.slice(3, 20)}).xlsx`, // excel文件名称及路径，即云存储中的路径
         fileContent: Buffer.from(result.toString(), 'binary'),
       })
       // eslint-disable-next-line no-console
